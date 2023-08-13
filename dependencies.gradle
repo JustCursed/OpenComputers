@@ -119,6 +119,7 @@ dependencies {
     compileOnly(deobf("https://github.com/purpleposeidon/fz_archive/raw/master/old/Factorization-1.7.10-0.8.108.jar"))
     compileOnly("api:coloredlightscore:1")
     compileOnly(deobf("http://immibis.com/mcmoddl/files/immibis-microblocks-59.1.2.jar"))
+    compileOnly("curse.maven:witchery-69673:2234410")
 
     testCompile("org.mockito:mockito-all:1.10.19")
     testCompile("org.scalactic:scalactic_2.11:2.2.6")
