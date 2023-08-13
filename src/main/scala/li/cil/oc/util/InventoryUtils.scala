@@ -1,5 +1,6 @@
 package li.cil.oc.util
 
+import com.emoniph.witchery.item.ItemGeneral
 import li.cil.oc.util.ExtendedWorld._
 import net.minecraft.block.BlockChest
 import net.minecraft.entity.Entity
@@ -417,6 +418,8 @@ object InventoryUtils {
         world.spawnEntityInWorld(entity)
         entity
       }
+      else if (stack.getItem.isInstanceOf[ItemGeneral] && stack.getItem.getDamage(stack) == 10)
+        entity
       else null
     case _ => null
   }
