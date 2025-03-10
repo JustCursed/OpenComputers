@@ -190,6 +190,8 @@ class InternetCard extends AbstractManagedEnvironment with DeviceInfo {
 }
 
 object InternetCard {
+  val proxy = new java.net.Proxy(java.net.Proxy.Type.HTTP, new InetSocketAddress(Settings.get.proxyIp, Settings.get.proxyPort))
+
   // For InternetFilteringRuleTest, where Settings.get is not provided.
   private val threadPool = ThreadPoolFactory.create("Internet", Option(Settings.get) match {
     case None => 1
@@ -513,7 +515,6 @@ object InternetCard {
     private class RequestSender(val url: URL, val post: Option[String], val headers: Map[String, String], val method: Option[String]) extends Callable[InputStream] {
       override def call() = try {
         checkLists(InetAddress.getByName(url.getHost), url.getHost)
-        val proxy = Option(FMLCommonHandler.instance.getMinecraftServerInstance.getServerProxy).getOrElse(java.net.Proxy.NO_PROXY)
         url.openConnection(proxy) match {
           case http: HttpURLConnection => try {
             http.setDoInput(true)

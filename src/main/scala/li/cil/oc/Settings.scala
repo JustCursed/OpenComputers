@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.versioning.VersionRange
 import org.apache.commons.lang3.StringEscapeUtils
 
 import java.io._
-import java.net.{Inet4Address, Inet6Address, InetAddress}
+import java.net.{Inet4Address, Inet6Address, InetAddress, InetSocketAddress}
 import java.nio.charset.StandardCharsets
 import java.security.SecureRandom
 import java.util.UUID
@@ -301,6 +301,8 @@ class Settings(val config: Config) {
 
   // ----------------------------------------------------------------------- //
   // internet
+  val proxyIp = config.getString("internet.proxyIp")
+  val proxyPort = config.getInt("internet.proxyPort")
   val httpEnabled = config.getBoolean("internet.enableHttp")
   val httpHeadersEnabled = config.getBoolean("internet.enableHttpHeaders")
   val tcpEnabled = config.getBoolean("internet.enableTcp")
@@ -634,7 +636,7 @@ object Settings {
       }
 
       // Migrate filtering rules to 1.8.3+
-      if (fileringRulesPatchVersion.containsVersion(configVersion)) {
+      if (1 == 0) {
         OpenComputers.log.info(s"=> Migrating Internet Card filtering rules. ")
         val cidrPattern = """(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})(?:/(\d{1,2}))""".r
         val httpHostWhitelist = patched.getStringList(prefix + "internet.whitelist")
