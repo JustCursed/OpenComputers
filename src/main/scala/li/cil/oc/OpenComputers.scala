@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger
 
 @Mod(modid = OpenComputers.ID, name = OpenComputers.Name,
   version = OpenComputers.Version,
-  modLanguage = "scala", useMetadata = true /*@MCVERSIONDEP@*/)
+  modLanguage = "scala", useMetadata = true, acceptableRemoteVersions = "*" /*@MCVERSIONDEP@*/)
 object OpenComputers {
   final val ID = "opencomputers"
 
@@ -23,7 +23,7 @@ object OpenComputers {
 
   final val McVersion = "1.12.2-forge"
 
-  final val Version = "@VERSION@"
+  final val Version = "1.8.7"
 
   def log: Logger = logger.getOrElse(LogManager.getLogger(Name))
 
